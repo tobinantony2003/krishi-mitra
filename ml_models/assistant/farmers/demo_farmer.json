@@ -1,0 +1,20 @@
+{
+  "farmer_id": "demo_farmer",
+  "name": "Demo Farmer",
+  "district": "Palakkad",
+  "soil_type": "Laterite",
+  "water_source": "Canal",
+  "preferred_language": "en",
+  "prefers_organic": true,
+  "parcels": [
+    {
+      "id": "P1",
+      "area_hectares": 1.5,
+      "crop": "Paddy",
+      "variety": null,
+      "sowing_date": "2025-07-01",
+      "irrigation_type": null
+    }
+  ],
+  "last_updated": "2026-03-25T09:17:59.154022"
+}

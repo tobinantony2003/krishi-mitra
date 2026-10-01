@@ -1,0 +1,10 @@
+.venv/
+.tools/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+.env.*
+kaggle.json
+*.pem
+*.key

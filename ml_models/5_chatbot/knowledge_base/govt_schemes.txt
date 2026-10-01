@@ -1,0 +1,23 @@
+Government Schemes (India) — Starter KB
+
+PM-KISAN
+- Direct income support for eligible farmer families.
+- Benefits and eligibility change over time; verify on official portal or with local agriculture office.
+
+PMFBY (Pradhan Mantri Fasal Bima Yojana)
+- Crop insurance scheme covering notified crops/areas.
+- Enrollment windows are season-based; premium subsidy applies as notified.
+- For claims: timely intimation and adherence to local procedures matter.
+
+KCC (Kisan Credit Card)
+- Credit access for crop cultivation and allied activities.
+- Interest subvention may apply subject to rules and timely repayment.
+
+Kerala-specific guidance
+- For district-level programs and subsidy lists, consult:\n+
+  - Local Krishi Bhavan\n+
+  - Kerala Agriculture Department updates\n+
+  - NABARD-linked schemes (where applicable)
+
+Note: Keep this file updated from official sources for production use.
+

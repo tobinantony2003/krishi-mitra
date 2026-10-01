@@ -1,0 +1,23 @@
+Fertilizer Guide (Starter KB)
+
+General principles (Kerala, humid tropics)
+- Prefer split application of nitrogen to reduce loss in heavy rains.
+- Use soil-test-based liming for acidic laterite soils.
+- Add organic matter (compost/green manure) to improve nutrient holding.
+
+Paddy (Rice) — generic schedule (example)
+- Basal: a portion of N + full P + a portion of K.
+- Tillering: N top-dress.
+- Panicle initiation: N + K as needed.
+- Avoid excess N in high humidity to reduce disease/pest pressure.
+
+Banana — generic hints
+- Banana is nutrient hungry; frequent split doses (N and K) are common.
+- Ensure micronutrients if deficiency symptoms occur (consult local advisory).
+
+Coconut — generic hints
+- Combine organic manures with recommended NPK and micronutrients (where deficient).
+- Improve drainage and mulch in summer for moisture retention.
+
+Note: Replace with crop- and variety-specific KAU/ICAR schedules for production.
+

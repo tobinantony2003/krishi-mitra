@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Krishi Mitra – Personal Farming Assistant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f5f7fa;
+        color: #111827;
+        display: flex;
+        min-height: 100vh;
+      }
+      .sidebar {
+        width: 320px;
+        padding: 20px;
+        background: #111827;
+        color: #f9fafb;
+      }
+      .sidebar h2 {
+        margin-top: 0;
+      }
+      .main {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      label {
+        font-size: 0.85rem;
+        display: block;
+        margin-bottom: 4px;
+      }
+      input, select, textarea {
+        width: 100%;
+        padding: 6px 8px;
+        margin-bottom: 8px;
+        border-radius: 4px;
+        border: 1px solid #d1d5db;
+        font-size: 0.9rem;
+        box-sizing: border-box;
+      }
+      button {
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+      }
+      .btn-primary {
+        background: #2563eb;
+        color: white;
+      }
+      .btn-secondary {
+        background: #4b5563;
+        color: white;
+      }
+      .card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        padding: 12px 14px;
+      }
+      .chat-window {
+        flex: 1;
+        overflow-y: auto;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        padding: 10px;
+        background: #f9fafb;
+      }
+      .msg {
+        margin-bottom: 10px;
+        padding: 8px 10px;
+        border-radius: 6px;
+        max-width: 80%;
+        white-space: pre-wrap;
+      }
+      .msg-user {
+        background: #dbeafe;
+        align-self: flex-end;
+      }
+      .msg-assistant {
+        background: #e5e7eb;
+        align-self: flex-start;
+      }
+      .chat-input {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      .chat-input textarea {
+        resize: vertical;
+        min-height: 48px;
+        max-height: 120px;
+      }
+      .advisory {
+        font-size: 0.85rem;
+        line-height: 1.4;
+      }
+      .tag {
+        display: inline-block;
+        font-size: 0.75rem;
+        padding: 2px 6px;
+        border-radius: 999px;
+        background: #e5e7eb;
+        margin-right: 4px;
+        margin-bottom: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <h2>Krishi Mitra</h2>
+      <p style="font-size:0.85rem; opacity:0.85;">
+        Personal AI companion for Kerala farmers. Fill profile once, then chat with your assistant.
+      </p>
+      <form id="profile-form">
+        <label for="farmer_id">Farmer ID</label>
+        <input id="farmer_id" required value="farmer_001" />
+
+        <label for="name">Name</label>
+        <input id="name" placeholder="e.g. Suresh" />
+
+        <label for="district">District</label>
+        <input id="district" placeholder="e.g. Palakkad" />
+
+        <label for="soil_type">Soil type</label>
+        <input id="soil_type" placeholder="e.g. Laterite" />
+
+        <label for="water_source">Water source</label>
+        <input id="water_source" placeholder="e.g. Canal" />
+
+        <label for="area_hectares">Main parcel area (ha)</label>
+        <input id="area_hectares" type="number" step="0.01" placeholder="1.5" />
+
+        <label for="crop">Main crop</label>
+        <input id="crop" placeholder="e.g. Paddy" />
+
+        <label for="sowing_date">Sowing date (YYYY-MM-DD)</label>
+        <input id="sowing_date" placeholder="2025-07-01" />
+
+        <label for="irrigation_type">Irrigation type</label>
+        <input id="irrigation_type" placeholder="Rainfed / Canal / Borewell" />
+
+        <label for="preferred_language">Language</label>
+        <select id="preferred_language">
+          <option value="ml">Malayalam</option>
+          <option value="en">English</option>
+        </select>
+
+        <label>
+          <input type="checkbox" id="prefers_organic" checked />
+          Prefer organic-first advice
+        </label>
+
+        <button type="submit" class="btn-primary" style="margin-top:8px; width:100%;">Save profile</button>
+      </form>
+      <p id="profile-status" style="font-size:0.8rem; margin-top:6px;"></p>
+    </div>
+
+    <div class="main">
+      <div class="card advisory" id="advisory-card">
+        <strong>Weekly &amp; seasonal plan</strong>
+        <div id="advisory-content" style="margin-top:6px; font-size:0.85rem;">
+          Save a profile and send a message to see your personalized plan here.
+        </div>
+      </div>
+
+      <div class="card" style="display:flex; flex-direction:column; flex:1; min-height:0;">
+        <div id="chat-window" class="chat-window"></div>
+        <div class="chat-input">
+          <textarea id="chat-input" placeholder="Ask in Malayalam or English..."></textarea>
+          <button id="send-btn" class="btn-secondary">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const apiBase = "";
+
+      const profileForm = document.getElementById("profile-form");
+      const profileStatus = document.getElementById("profile-status");
+      const chatWindow = document.getElementById("chat-window");
+      const chatInput = document.getElementById("chat-input");
+      const sendBtn = document.getElementById("send-btn");
+      const advisoryContent = document.getElementById("advisory-content");
+
+      function appendMessage(text, who) {
+        const div = document.createElement("div");
+        div.className = "msg " + (who === "user" ? "msg-user" : "msg-assistant");
+        div.textContent = text;
+        chatWindow.appendChild(div);
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+      }
+
+      async function saveProfile() {
+        const farmer_id = document.getElementById("farmer_id").value.trim();
+        const name = document.getElementById("name").value.trim() || "Farmer";
+        const district = document.getElementById("district").value.trim() || "Palakkad";
+        const soil_type = document.getElementById("soil_type").value.trim() || "Laterite";
+        const water_source = document.getElementById("water_source").value.trim() || "Canal";
+        const area = parseFloat(document.getElementById("area_hectares").value || "1.5");
+        const crop = document.getElementById("crop").value.trim() || "Paddy";
+        const sowing_date = document.getElementById("sowing_date").value.trim() || null;
+        const irrigation_type = document.getElementById("irrigation_type").value.trim() || "Canal";
+        const preferred_language = document.getElementById("preferred_language").value;
+        const prefers_organic = document.getElementById("prefers_organic").checked;
+
+        const payload = {
+          farmer_id,
+          name,
+          district,
+          soil_type,
+          water_source,
+          preferred_language,
+          prefers_organic,
+          parcels: [
+            {
+              id: "P1",
+              area_hectares: area,
+              crop,
+              sowing_date,
+              irrigation_type,
+            },
+          ],
+        };
+
+        profileStatus.textContent = "Saving profile...";
+        try {
+          const res = await fetch(apiBase + "/api/farmers", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+          if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            throw new Error(err.detail || "Failed to save profile");
+          }
+          profileStatus.textContent = "Profile saved.";
+        } catch (e) {
+          profileStatus.textContent = "Error: " + e.message;
+        }
+      }
+
+      function renderAdvisory(advisory) {
+        if (!advisory) {
+          advisoryContent.textContent = "No advisory available.";
+          return;
+        }
+        const lines = [];
+        if (advisory.weekly) {
+          if (advisory.weekly.today && advisory.weekly.today.length) {
+            lines.push("Today:");
+            advisory.weekly.today.forEach((t) => lines.push("• " + t));
+          }
+          if (advisory.weekly.this_week && advisory.weekly.this_week.length) {
+            lines.push("");
+            lines.push("This week:");
+            advisory.weekly.this_week.forEach((t) => lines.push("• " + t));
+          }
+        }
+        if (advisory.seasonal && advisory.seasonal.season_plan && advisory.seasonal.season_plan.length) {
+          lines.push("");
+          lines.push("Season plan:");
+          advisory.seasonal.season_plan.forEach((t) => lines.push("• " + t));
+        }
+        advisoryContent.textContent = lines.join("\n") || "No advisory available.";
+      }
+
+      async function sendMessage() {
+        const text = chatInput.value.trim();
+        if (!text) return;
+        const farmer_id = document.getElementById("farmer_id").value.trim();
+        const language = document.getElementById("preferred_language").value;
+
+        appendMessage(text, "user");
+        chatInput.value = "";
+        sendBtn.disabled = true;
+        sendBtn.textContent = "Sending...";
+
+        try {
+          const res = await fetch(apiBase + "/api/assistant/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ farmer_id, message: text, language }),
+          });
+          if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            throw new Error(err.detail || "Request failed");
+          }
+          const data = await res.json();
+          const reply = data.assistant_response?.response || "(no response)";
+          appendMessage(reply, "assistant");
+          renderAdvisory(data.advisory);
+        } catch (e) {
+          appendMessage("Error: " + e.message, "assistant");
+        } finally {
+          sendBtn.disabled = false;
+          sendBtn.textContent = "Send";
+        }
+      }
+
+      profileForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        saveProfile();
+      });
+
+      sendBtn.addEventListener("click", () => sendMessage());
+      chatInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+          e.preventDefault();
+          sendMessage();
+        }
+      });
+    </script>
+  </body>
+  </html>
+

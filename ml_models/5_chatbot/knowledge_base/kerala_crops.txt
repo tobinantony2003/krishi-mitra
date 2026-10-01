@@ -1,0 +1,42 @@
+Kerala Crop Guides (Starter Knowledge Base)
+
+Paddy (Rice)
+- Best seasons: Kharif (Jun–Sep) is common; Rabi in irrigated areas.
+- Key needs: steady water (puddled fields), balanced NPK, good drainage during heavy rains.
+- Common issues: leaf blast, sheath blight, brown plant hopper, stem borer.
+- Practical tips: split nitrogen doses; keep field bunds strong; maintain proper spacing for airflow.
+
+Coconut
+- Planting: generally year-round with best establishment before/around monsoon.
+- Key needs: good drainage in lowlands; organic matter; micronutrients where deficient.
+- Common issues: rhinoceros beetle, bud rot, root wilt (complex).
+- Practical tips: remove breeding sites; use pheromone traps; avoid injuries to crown; improve drainage.
+
+Banana
+- Planting: year-round; avoid weeks with peak flooding in low-lying districts.
+- Key needs: well-drained fertile soil; steady irrigation in summer; wind protection.
+- Common issues: sigatoka, panama wilt; leaf spot complexes.
+- Practical tips: use healthy suckers/tissue-culture plants; sanitation; maintain spacing and de-leafing.
+
+Ginger
+- Best season: Kharif (start of monsoon) in many Kerala areas; ensure raised beds in heavy rainfall zones.
+- Key needs: well-drained soil; mulching; avoid water stagnation.
+- Common issues: soft rot (Pythium/Phytophthora), rhizome rot.
+- Practical tips: treat seed rhizomes; ensure drainage; avoid continuous monocropping.
+
+Turmeric
+- Best season: Kharif (monsoon onset) with good drainage.
+- Key needs: organic matter; mulching; avoid waterlogging.
+- Practical tips: raised beds in high-rainfall districts; monitor leaf spot in prolonged humidity.
+
+Black Pepper
+- Best season: establish vines at monsoon onset; avoid water stagnation.
+- Common issues: Phytophthora foot rot; pollu beetle; quick wilt.
+- Practical tips: good drainage, shade management, sanitation and timely sprays as per extension advice.
+
+Tapioca (Cassava)
+- Best season: Rabi/Summer in many places; tolerant to laterite soils with moisture management.
+- Practical tips: choose suitable varieties; manage weeds early; avoid severe waterlogging.
+
+Note: This is a starter KB file. Replace/extend with KAU/ICAR/IMD-backed content for production.
+

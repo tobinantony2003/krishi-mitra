@@ -1,0 +1,20 @@
+{
+  "farmer_id": "farmer_001",
+  "name": "TOBIN ANTONY",
+  "district": "Alappuzha",
+  "soil_type": "salinity",
+  "water_source": "canal",
+  "preferred_language": "ml",
+  "prefers_organic": true,
+  "parcels": [
+    {
+      "id": "P1",
+      "area_hectares": 1.5,
+      "crop": "paddy",
+      "variety": null,
+      "sowing_date": "2025-11-11",
+      "irrigation_type": "canal"
+    }
+  ],
+  "last_updated": "2026-05-08T08:45:18.391794"
+}

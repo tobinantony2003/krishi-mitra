@@ -1,0 +1,32 @@
+Kerala Pest & Disease Treatments (Starter KB)
+
+Brown Plant Hopper (Rice)
+- Risk: high humidity + warm temps; dense crop; excess nitrogen.
+- Organic/IPM: avoid excess N, keep water level proper, encourage predators, use light traps.
+- Chemical: use recommended insecticide only when ETL is crossed (consult local extension).
+
+Stem Borer (Rice)
+- Risk: high at vegetative/tillering stage in many systems.
+- IPM: synchronized planting, remove stubbles, pheromone traps where available.
+- Chemical: as per label and extension recommendations.
+
+Leaf Blast (Rice)
+- Risk: cool nights + very high humidity + cloudy conditions.
+- Cultural: spacing, avoid late evening overhead watering, avoid excess nitrogen.
+- Chemical: tricyclazole-based fungicide (follow label/extension).
+
+Sheath Blight (Rice)
+- Risk: dense canopy + high humidity.
+- Cultural: reduce excess N, manage spacing, field hygiene.
+- Chemical: validamycin (label/extension).
+
+Rhinoceros Beetle (Coconut)
+- Control: destroy breeding sites (rotting logs/manure pits), pheromone traps.
+- Crown treatment: follow local advisory (avoid unsafe handling).
+
+Phytophthora foot rot (Pepper)
+- Control: drainage improvement, sanitation, copper-based protection in rainy months.
+- Chemical: metalaxyl+mancozeb or copper fungicides (label/extension).
+
+Note: This KB is a starter. Always align chemical use with local regulations and label instructions.
+
